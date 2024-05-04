@@ -11,7 +11,10 @@ h1 {
 .row-7:nth-child(even),
 .row-8:nth-child(odd)
 {
-    background-color: black;
+    background-color: #986931;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .row-1:nth-child(odd),
@@ -23,7 +26,10 @@ h1 {
 .row-7:nth-child(odd),
 .row-8:nth-child(even) 
 {
-    background-color: white;
+    background-color: #d6b675b1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .board {
@@ -37,8 +43,25 @@ h1 {
     border: 2px solid black;
 }
 
+.red-piece {
+    width: 80px; 
+    height: 80px; 
+    background-color: red; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
 
-
+.black-piece {
+    width: 80px; 
+    height: 80px; 
+    background-color: black; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
 
 
   
