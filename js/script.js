@@ -1,1 +1,2 @@
-alert('checkers game')
+//  alert('checkers game')
+
