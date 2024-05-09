@@ -34,6 +34,16 @@ h1 {
     align-items: center; 
 }
 
+.piece {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+
 .dark-space {
     background-color: #986931;
     display: flex;
