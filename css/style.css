@@ -62,6 +62,9 @@ h1 {
     border: 5px solid gray ;
 }
 
+.selected {
+    border: 5px solid blue;
+}
 
   
   

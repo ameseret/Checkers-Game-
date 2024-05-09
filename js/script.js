@@ -96,6 +96,26 @@ document.addEventListener("DOMContentLoaded", function() {
         cell.classList.add("selected");
         selectedPiece = cell;
      }
+     
+     // Function to move the selected piece
+    function movePiece(targetCell) {
+        console.log('Moving piece...');
+        console.log("Selected piece: ", selectedPiece);
+        console.log("Target cell: ", targetCell);
+
+        targetCell.appendChild(selectedPiece.querySelector(".piece"));
+        console.log("Piece moved to target cell.");
+
+        selectedPiece.classList.remove("occupied");
+        console.log("Removing occupied class from selected piece.");
+
+        targetCell.classList.add("occupied");
+        console.log("Adding occupied class to target cell.");
+
+        clearSelection();
+       
+    }
+     
 
 
 });
