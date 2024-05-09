@@ -58,6 +58,9 @@ h1 {
     align-items: center;
 }
 
+.available-move {
+    border: 5px solid gray ;
+}
 
 
   
