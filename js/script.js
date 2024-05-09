@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const board = document.getElementById("board");
     let currentPlayer = 'red';
+    let selectedPiece = null;
+    let availableMoves = [];
     
 
     initializeBoard();
@@ -69,6 +71,23 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Clearing selection...');
             clearSelection();
         }
+    }
+
+     // Function to clear piece selection and available moves
+     function clearSelection() {
+        console.log('Clearing selection...')
+        if (selectedPiece) {
+            console.log("Removing 'selected' class from selected piece...");
+            selectedPiece.classList.remove("selected");
+            selectedPiece = null;
+        }
+        availableMoves.forEach(move => {
+            console.log(`Removing 'available-move' class from cell at row ${move.row} and column ${move.col}...`);
+            const cell = document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`);
+            cell.classList.remove("available-move");
+        });
+        console.log("Resetting available moves...");
+        availableMoves = [];
     }
 
 
