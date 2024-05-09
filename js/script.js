@@ -90,6 +90,13 @@ document.addEventListener("DOMContentLoaded", function() {
         availableMoves = [];
     }
 
+     // Function to select a piece
+     function selectPiece(cell) {
+        clearSelection();
+        cell.classList.add("selected");
+        selectedPiece = cell;
+     }
+
 
 });
 
