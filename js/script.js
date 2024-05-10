@@ -153,6 +153,16 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Right move is valid and added to available moves.");
         }
 
+        highlightAvailableMoves();
+
+    }
+
+    // Function to highlight available moves
+    function highlightAvailableMoves() {
+        availableMoves.forEach(move => {
+            const cell = document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`);
+            cell.classList.add("available-move");
+        });
     }
    
 
