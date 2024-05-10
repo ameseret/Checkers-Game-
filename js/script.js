@@ -125,9 +125,38 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Is move valid?", isValid);
         return isValid;
     }
+
+    // Function to calculate available moves for the selected piece
+    function calculateAvailableMoves(piece) {
+        const row = parseInt(piece.dataset.row);
+        const col = parseInt(piece.dataset.col);
+        const direction = piece.dataset.color === 'red' ? -1 : 1;
+
+        availableMoves = [];
+
+        console.log("Calculating available moves for piece at row:", row, "and column:", col);
+
+        const left = { row: row + direction, col: col - 1 };
+        console.log("Checking left move:", left);
+
+        const right = { row: row + direction, col: col + 1 };
+        console.log("Checking right move:", right);
+
+        if (isValidMove(left)) {
+            availableMoves.push(left);
+            console.log("Left move is valid and added to available moves.");
+
+        }
+
+        if (isValidMove(right)) {
+            availableMoves.push(right);
+            console.log("Right move is valid and added to available moves.");
+        }
+
+    }
+   
+
      
-
-
 });
 
 
