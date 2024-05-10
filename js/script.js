@@ -160,9 +160,49 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Right move is valid and added to available moves.");
         }
 
+        
+
+
+
         highlightAvailableMoves();
 
     }
+   
+
+    // Function to check if a capture is valid
+    function isValidCapture(move, opponentColor) {
+        const currentRow = parseInt(selectedPiece.dataset.row);
+        const currentCol = parseInt(selectedPiece.dataset.col);
+        const jumpedRow = currentRow + (move.row - currentRow) / 2; 
+        const jumpedCol = currentCol + (move.col - currentCol) / 2; 
+        
+        console.log("Current Row:", currentRow);
+        console.log("Current Col:", currentCol);
+        console.log("Jumped Row:", jumpedRow);
+        console.log("Jumped Col:", jumpedCol);
+    
+        if (jumpedRow < 0 || jumpedRow >= 8 || jumpedCol < 0 || jumpedCol >= 8) {
+            console.log("invalid jump");
+            return false;
+        }
+    
+        
+        const jumpedCell = document.querySelector(`.cell[data-row="${jumpedRow}"][data-col="${jumpedCol}"]`);
+        if (!jumpedCell || !jumpedCell.classList.contains("occupied") || jumpedCell.dataset.color !== opponentColor) { 
+            console.log("No opponent piece to jump over")
+            return false; 
+        }
+    
+        
+        const nextCell = document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`); 
+        if (!nextCell || nextCell.classList.contains("occupied")) {
+            console.log("cell is occupied");
+            return false; 
+        } 
+        console.log("valid capture");
+        return true;
+    }
+
 
     // Function to highlight available moves
     function highlightAvailableMoves() {
