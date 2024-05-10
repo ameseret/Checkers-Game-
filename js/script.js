@@ -72,9 +72,11 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (isAvailableMove) {
             console.log('Moving piece...');
             movePiece(clickedCell);
-        } else {
-            console.log('Clearing selection...');
-            clearSelection();
+
+        } 
+        
+        else {
+            switchPlayer()
         }
     }
 
@@ -169,6 +171,11 @@ document.addEventListener("DOMContentLoaded", function() {
             cell.classList.add("available-move");
         });
     }
+
+    // Function to switch player turns
+    function switchPlayer() {
+        currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
+        }
    
 
      
