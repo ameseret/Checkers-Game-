@@ -64,6 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Selecting piece...');
 
             selectPiece(clickedCell);
+            
+            if (currentPlayer === 'red') {
+                calculateAvailableMoves(clickedCell);
+            }
+
         } else if (isAvailableMove) {
             console.log('Moving piece...');
             movePiece(clickedCell);
