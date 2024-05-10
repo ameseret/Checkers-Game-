@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
         clearSelection();
         cell.classList.add("selected");
         selectedPiece = cell;
+        calculateAvailableMoves(cell)
      }
      
      // Function to move the selected piece
@@ -138,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const row = parseInt(piece.dataset.row);
         const col = parseInt(piece.dataset.col);
         const direction = piece.dataset.color === 'red' ? -1 : 1;
+        const opponentColor = piece.dataset.color === 'red' ? 'black' : 'red';
 
         availableMoves = [];
 
