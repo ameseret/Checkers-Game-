@@ -160,6 +160,23 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Right move is valid and added to available moves.");
         }
 
+         
+         const leftCapture = { row: row + (2 * direction), col: col - 2 }; 
+         console.log("checking left capture:", leftCapture);
+
+         const rightCapture = { row: row + (2 * direction), col: col + 2 }; 
+         console.log("checking right capture:", rightCapture);
+
+         if (isValidCapture(leftCapture, opponentColor)) {
+             availableMoves.push(leftCapture);
+             console.log("left capture is valid and added to available moves.");
+         } 
+ 
+         if (isValidCapture(rightCapture, opponentColor)) {
+             availableMoves.push(rightCapture);
+             console.log("right capture is valid and added to available moves.");
+         } 
+
         
 
 
