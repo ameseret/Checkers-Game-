@@ -115,6 +115,16 @@ document.addEventListener("DOMContentLoaded", function() {
         clearSelection();
        
     }
+
+    // Function to check if a move is valid
+    function isValidMove(move) {
+        console.log("Checking validity of move:", move);
+        const isValid = move.row >= 0 && move.row < 8 && move.col >= 0 && move.col < 8
+            && !document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`).classList.contains("occupied");
+        
+        console.log("Is move valid?", isValid);
+        return isValid;
+    }
      
 
 
