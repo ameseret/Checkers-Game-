@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentPlayer = 'red';
     let selectedPiece = null;
     let availableMoves = [];
-    
+    let redScore = 0;
+    let blackScore = 0;
 
     initializeBoard();
 
@@ -120,6 +121,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
        
         checkJumpedPieces(targetCell);
+
+        if (targetCell !== selectedPiece && Math.abs(parseInt(targetCell.dataset.row) - parseInt(selectedPiece.dataset.row)) > 1) {
+            if (currentPlayer === 'red') {
+                blackScore++; 
+            } else {
+                redScore++; 
+            }
+            changeScore(); 
+        }
+
         clearSelection();
        
     }
@@ -256,6 +267,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     
    
+    }
+
+    // Function to change the score of the game
+    function changeScore() {
+        document.getElementById('red-score').textContent = redScore;
+        document.getElementById('black-score').textContent = blackScore;
     }
      
 });
