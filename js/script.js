@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             console.log('clearing selection');
             clearSelection();
+            switchPlayer();
         }
 
            
@@ -101,9 +102,9 @@ document.addEventListener("DOMContentLoaded", function() {
      
      // Function to move the selected piece
     function movePiece(targetCell) {
-        // console.log('Moving piece...');
-        // console.log("Selected piece: ", selectedPiece);
-        // console.log("Target cell: ", targetCell);
+        console.log('Moving piece...');
+        console.log("Selected piece: ", selectedPiece);
+        console.log("Target cell: ", targetCell);
 
         targetCell.appendChild(selectedPiece.querySelector(".piece"));
         console.log("Piece moved to target cell.");
@@ -117,9 +118,9 @@ document.addEventListener("DOMContentLoaded", function() {
         selectedPiece.removeAttribute("data-color");
         targetCell.dataset.color = currentPlayer;
 
-        clearSelection();
+       
         checkJumpedPieces(targetCell);
-        switchPlayer();
+        clearSelection();
        
     }
 
