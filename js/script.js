@@ -61,23 +61,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // console.log('Is available move:', isAvailableMove);
 
         if (isOccupied && clickedCell.dataset.color === currentPlayer) {
-            // console.log('Selecting piece...');
+            console.log('selecting piece');
 
             selectPiece(clickedCell);
-            
-            if (currentPlayer === 'red') {
-                calculateAvailableMoves(clickedCell);
-            }
-
         } else if (isAvailableMove) {
-            // console.log('Moving piece...');
             movePiece(clickedCell);
-
-        } 
-        
-        else {
-            switchPlayer()
+        } else {
+            console.log('clearing selection');
+            clearSelection();
         }
+
+           
     }
 
      // Function to clear piece selection and available moves
@@ -109,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function movePiece(targetCell) {
         // console.log('Moving piece...');
         // console.log("Selected piece: ", selectedPiece);
-        console.log("Target cell: ", targetCell);
+        // console.log("Target cell: ", targetCell);
 
         targetCell.appendChild(selectedPiece.querySelector(".piece"));
         console.log("Piece moved to target cell.");
@@ -125,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         clearSelection();
         checkJumpedPieces(targetCell);
+        switchPlayer();
        
     }
 
