@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Adding occupied class to target cell.");
 
         clearSelection();
+        checkJumpedPieces(targetCell);
        
     }
 
@@ -235,6 +236,23 @@ document.addEventListener("DOMContentLoaded", function() {
     function switchPlayer() {
         currentPlayer = currentPlayer === 'red' ? 'black' : 'red';
         }
+    
+     // Function to check and remove jumped pieces
+     function checkJumpedPieces(targetCell) {
+        const currentRow = parseInt(selectedPiece.dataset.row);
+        const currentCol = parseInt(selectedPiece.dataset.col);
+        const targetRow = parseInt(targetCell.dataset.row);
+        const targetCol = parseInt(targetCell.dataset.col);
+        const jumpedRow = currentRow + (targetRow - currentRow) / 2;
+        const jumpedCol = currentCol + (targetCol - currentCol) / 2;
+        const jumpedCell = document.querySelector(`.cell[data-row="${jumpedRow}"][data-col="${jumpedCol}"]`);
+
+        if (jumpedCell && jumpedCell.classList.contains("occupied")) {
+            jumpedCell.removeChild(jumpedCell.querySelector(".piece"));
+            jumpedCell.classList.remove("occupied");
+           }
+        }
+    
    
 
      
