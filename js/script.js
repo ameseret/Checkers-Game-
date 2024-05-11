@@ -10,6 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let redScore = 0;
     let blackScore = 0;
 
+    
+
+    let timer; 
+    const timerDisplay = document.getElementById("timer"); 
+    const gameClock = 120000; 
+    let gameStarted = false;
+
+    
+
     initializeBoard();
 
     function initializeBoard() {
@@ -274,6 +283,46 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('red-score').textContent = redScore;
         document.getElementById('black-score').textContent = blackScore;
     }
+
+
+    // Functions that set up the game timer
+
+    function startTimer() {
+        gameStarted = true;
+        const startTime = Date.now();
+        timer = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = gameClock - elapsedTime;
+            if (remainingTime <= 0) {
+                clearInterval(timer);
+            } else {
+                updateTimerDisplay(remainingTime);
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay(remainingTime) {
+        const minutes = Math.floor(remainingTime / 60000);
+        const seconds = Math.floor((remainingTime % 60000) / 1000);
+        timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+
+   
+
+    board.addEventListener("click", function() {
+        if (!gameStarted) {
+            startTimer();
+        }
+    });
+
+   
+
+
+
+    
+    
+
+    
      
 });
 
