@@ -52,16 +52,16 @@ document.addEventListener("DOMContentLoaded", function() {
     function cellClicked() {
         console.log('Cell clicked!');
         const clickedCell = this;
-        console.log('Clicked cell:', clickedCell);
+        // console.log('Clicked cell:', clickedCell);
 
         const isOccupied = clickedCell.classList.contains("occupied");
-        console.log('Is occupied:', isOccupied);
+        // console.log('Is occupied:', isOccupied);
 
         const isAvailableMove = clickedCell.classList.contains("available-move");
-        console.log('Is available move:', isAvailableMove);
+        // console.log('Is available move:', isAvailableMove);
 
         if (isOccupied && clickedCell.dataset.color === currentPlayer) {
-            console.log('Selecting piece...');
+            // console.log('Selecting piece...');
 
             selectPiece(clickedCell);
             
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
         } else if (isAvailableMove) {
-            console.log('Moving piece...');
+            // console.log('Moving piece...');
             movePiece(clickedCell);
 
         } 
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function() {
      
      // Function to move the selected piece
     function movePiece(targetCell) {
-        console.log('Moving piece...');
-        console.log("Selected piece: ", selectedPiece);
+        // console.log('Moving piece...');
+        // console.log("Selected piece: ", selectedPiece);
         console.log("Target cell: ", targetCell);
 
         targetCell.appendChild(selectedPiece.querySelector(".piece"));
@@ -120,6 +120,9 @@ document.addEventListener("DOMContentLoaded", function() {
         targetCell.classList.add("occupied");
         console.log("Adding occupied class to target cell.");
 
+        selectedPiece.removeAttribute("data-color");
+        targetCell.dataset.color = currentPlayer;
+
         clearSelection();
         checkJumpedPieces(targetCell);
        
@@ -127,11 +130,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to check if a move is valid
     function isValidMove(move) {
-        console.log("Checking validity of move:", move);
+        // console.log("Checking validity of move:", move);
         const isValid = move.row >= 0 && move.row < 8 && move.col >= 0 && move.col < 8
             && !document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`).classList.contains("occupied");
         
-        console.log("Is move valid?", isValid);
+        // console.log("Is move valid?", isValid);
         return isValid;
     }
 
@@ -144,23 +147,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
         availableMoves = [];
 
-        console.log("Calculating available moves for piece at row:", row, "and column:", col);
+        // console.log("Calculating available moves for piece at row:", row, "and column:", col);
 
         const left = { row: row + direction, col: col - 1 };
-        console.log("Checking left move:", left);
+        // console.log("Checking left move:", left);
 
         const right = { row: row + direction, col: col + 1 };
-        console.log("Checking right move:", right);
+        // console.log("Checking right move:", right);
 
         if (isValidMove(left)) {
             availableMoves.push(left);
-            console.log("Left move is valid and added to available moves.");
+            // console.log("Left move is valid and added to available moves.");
 
         }
 
         if (isValidMove(right)) {
             availableMoves.push(right);
-            console.log("Right move is valid and added to available moves.");
+            // console.log("Right move is valid and added to available moves.");
         }
 
          
@@ -196,10 +199,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const jumpedRow = currentRow + (move.row - currentRow) / 2; 
         const jumpedCol = currentCol + (move.col - currentCol) / 2; 
         
-        console.log("Current Row:", currentRow);
-        console.log("Current Col:", currentCol);
-        console.log("Jumped Row:", jumpedRow);
-        console.log("Jumped Col:", jumpedCol);
+        // console.log("Current Row:", currentRow);
+        // console.log("Current Col:", currentCol);
+        // console.log("Jumped Row:", jumpedRow);
+        // console.log("Jumped Col:", jumpedCol);
     
         if (jumpedRow < 0 || jumpedRow >= 8 || jumpedCol < 0 || jumpedCol >= 8) {
             console.log("invalid jump");
@@ -248,13 +251,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const jumpedCell = document.querySelector(`.cell[data-row="${jumpedRow}"][data-col="${jumpedCol}"]`);
 
         if (jumpedCell && jumpedCell.classList.contains("occupied")) {
+            console.log("jumped cell is occupied, removing piece");
             jumpedCell.removeChild(jumpedCell.querySelector(".piece"));
             jumpedCell.classList.remove("occupied");
-           }
+            jumpedCell.removeAttribute("data-color");
+           } else {
+            console.log("no piece jumped");
         }
     
    
-
+    }
      
 });
 
