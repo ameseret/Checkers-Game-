@@ -73,8 +73,11 @@ h1 {
 }
   
   
-
- 
+.winner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

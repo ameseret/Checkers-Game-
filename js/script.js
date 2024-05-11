@@ -295,6 +295,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const remainingTime = gameClock - elapsedTime;
             if (remainingTime <= 0) {
                 clearInterval(timer);
+                endGame();
             } else {
                 updateTimerDisplay(remainingTime);
             }
@@ -313,7 +314,22 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!gameStarted) {
             startTimer();
         }
+        
     });
+
+      // Function to end the game
+      function endGame() {
+        clearInterval(timer);
+        let winner;
+        if (redScore > blackScore) {
+            winner = "Player 2 (Black)";
+        } else if (blackScore > redScore) {
+            winner = "Player 1 (Red)";
+        }
+        document.getElementById("winner").textContent = `Winner: ${winner}`;
+    }
+
+
 
    
 
