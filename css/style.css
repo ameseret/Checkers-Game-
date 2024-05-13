@@ -2,6 +2,17 @@ h1 {
 
     text-align: center;
 
+    color: rgb(252, 232, 116);
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+
+body {
+
+    background-color: rgb(13, 103, 13);
+    
 }
 
 
@@ -22,7 +33,9 @@ h1 {
 
     grid-template-rows: repeat(8, 100px);
 
-    border: 2px solid black;
+    border: 3px solid black;
+
+    background-color: white;
 
 
 }
@@ -142,6 +155,8 @@ h1 {
 
     align-items: center;
 
+    color:  rgb(252, 232, 116);
+
 
 }
 
@@ -155,7 +170,29 @@ h1 {
 
     align-items: center;
 
-    
+    color: rgb(252, 232, 116);
+
+
+}
+
+
+.players {
+
+    display: flex;
+
+    justify-content: left;
+
+    align-items: center;
+
+    color: rgb(252, 232, 116);
+
+}
+
+
+.number {
+
+    padding-left: 1%;
+
 }
 
 
