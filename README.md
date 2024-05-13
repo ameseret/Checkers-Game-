@@ -1,5 +1,6 @@
 # Checkers-Game
 
+<<<<<<< HEAD
 #  Game Description: Checkers is a strategy board game for two players that involves diagonally forward movements of uniform game pieces and mandatory captures by jumping over opponent pieces.
 
 # Screenshot:
@@ -15,3 +16,5 @@
 
 
 
+=======
+>>>>>>> 44e9e8f48a24a3e90e5ea42e5f8039e2d90ff75e
